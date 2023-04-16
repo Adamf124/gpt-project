@@ -5,6 +5,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible)
+  }
 
   return (
     <div className="App">
@@ -16,10 +21,13 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 className={`title ${isVisible ? 'visible' : 'hidden'}`}>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
+        </button>
+        <button id="toggle-visibility" onClick={toggleVisibility}>
+          Toggle Visibility
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
